@@ -68,8 +68,8 @@ export default function Layout({ children, currentPageName }) {
                   to={item.url}
                   className={`px-6 py-3 brutalist-border font-black text-sm transform transition-all hover:scale-105 ${
                     location.pathname === item.url
-                      ? 'bg-lime-green text-black brutalist-shadow'
-                      : 'bg-white text-black hover:bg-hot-pink hover:text-white brutalist-shadow-small'
+                      ? 'bg-lime-500 text-black brutalist-shadow'
+                      : 'bg-white text-black hover:bg-pink-500 hover:text-white brutalist-shadow-small'
                   } ${item.name === 'Scams' ? 'rotate-1' : item.name === 'AI Media' ? '-rotate-1' : ''}`}
                 >
                   <div className="flex items-center gap-2">
@@ -81,7 +81,7 @@ export default function Layout({ children, currentPageName }) {
             </nav>
 
             {/* Mobile Menu Button */}
-            <button className="md:hidden bg-electric-blue text-white px-4 py-2 brutalist-border brutalist-shadow font-black">
+            <button className="md:hidden bg-blue-500 text-white px-4 py-2 brutalist-border brutalist-shadow font-black">
               MENU
             </button>
           </div>

@@ -137,7 +137,7 @@ export default function ScamsPage() {
           </div>
           <div className="w-full bg-gray-200 brutalist-border h-8">
             <div
-              className="bg-lime-green brutalist-border border-r-4 h-full transition-all duration-300 ease-in-out"
+              className="bg-lime-500 brutalist-border border-r-4 h-full transition-all duration-300 ease-in-out"
               style={{ width: `${progressPercentage}%` }}
             ></div>
           </div>
@@ -184,7 +184,7 @@ export default function ScamsPage() {
         )}
 
         {currentStep === 2 && (
-          <div className="bg-lime-green brutalist-border brutalist-shadow p-8 mb-12 transform -rotate-1">
+          <div className="bg-lime-500 brutalist-border brutalist-shadow p-8 mb-12 transform -rotate-1">
             <h2 className="text-3xl md:text-4xl font-black text-black mb-6 text-center">
               🛡️ PROTECTION TIPS
             </h2>
@@ -210,7 +210,7 @@ export default function ScamsPage() {
             {!completed && (
               <button
                 onClick={markComplete}
-                className="bg-electric-blue text-white px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all"
+                className="bg-blue-500 text-white px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all"
               >
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="w-6 h-6" />
@@ -219,7 +219,7 @@ export default function ScamsPage() {
               </button>
             )}
             {completed && (
-               <div className="mt-6 inline-block bg-lime-green text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
+               <div className="mt-6 inline-block bg-lime-500 text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5" />
                   TOPIC COMPLETED!
@@ -244,7 +244,7 @@ export default function ScamsPage() {
            <button 
             onClick={nextStep} 
             disabled={currentStep === totalSteps - 1}
-            className="bg-hot-pink text-white px-6 py-3 brutalist-border brutalist-shadow-small font-black text-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed">
+            className="bg-pink-500 text-white px-6 py-3 brutalist-border brutalist-shadow-small font-black text-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed">
              <div className="flex items-center gap-2">
                 NEXT
                 <ArrowRight className="w-5 h-5" />

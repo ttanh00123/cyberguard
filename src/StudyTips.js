@@ -165,7 +165,7 @@ export default function StudyTipsPage() {
           </p>
 
           {completed && (
-            <div className="mt-6 inline-block bg-lime-green text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
+            <div className="mt-6 inline-block bg-lime-500 text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5" />
                 TOPIC COMPLETED!
@@ -201,7 +201,7 @@ export default function StudyTipsPage() {
                 return (
                   <div key={strategy.id} 
                        className={`bg-white brutalist-border brutalist-shadow p-6 transform ${rotation} hover:scale-105 transition-all cursor-pointer`}
-                       onClick={() => setSelectedStrategy(strategy)}>
+                       onClick={() => {setSelectedStrategy(strategy);}}>
                     <div className={`inline-block p-4 ${strategy.color} brutalist-border brutalist-shadow-small mb-4`}>
                       <strategy.icon className="w-8 h-8 text-white" />
                     </div>
@@ -294,7 +294,7 @@ export default function StudyTipsPage() {
               </button>
             )}
             {completed && (
-               <div className="mt-6 inline-block bg-lime-green text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
+               <div className="mt-6 inline-block bg-lime-500 text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5" />
                   TOPIC COMPLETED!
@@ -319,7 +319,7 @@ export default function StudyTipsPage() {
            <button 
             onClick={nextStep} 
             disabled={currentStep === totalSteps - 1}
-            className="bg-hot-pink text-white px-6 py-3 brutalist-border brutalist-shadow-small font-black text-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed">
+            className="bg-pink-500 text-white px-6 py-3 brutalist-border brutalist-shadow-small font-black text-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed">
              <div className="flex items-center gap-2">
                 NEXT
                 <ArrowRight className="w-5 h-5" />
@@ -404,7 +404,7 @@ export default function StudyTipsPage() {
                 )}
 
                 {selectedStrategy.techniques && (
-                  <div className="bg-orange-50 brutalist-border p-4">
+                  <div className="bg-orange-500 brutalist-border p-4">
                     <h4 className="font-black text-lg mb-3 text-orange-600">⏰ TIME MANAGEMENT TECHNIQUES:</h4>
                     <ul className="space-y-2">
                       {selectedStrategy.techniques.map((technique, index) => (
