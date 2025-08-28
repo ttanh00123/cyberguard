@@ -1,13 +1,12 @@
+import "./App.css"
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router";
 import { AlertTriangle, Eye, Bot, Users, BookOpen, Shield, Target, Zap, CheckCircle2, ArrowRight } from "lucide-react";
-
-// Example placeholder components for each topic page
-function ScamsPage() { return <div>Scams Page</div>; }
-function MisinformationPage() { return <div>Misinformation Page</div>; }
-function AIMediaPage() { return <div>AI Media Page</div>; }
-function NetiquettePage() { return <div>Netiquette Page</div>; }
-function StudyTipsPage() { return <div>Study Tips Page</div>; }
+import ScamsPage from "./Scams";
+import MisinformationPage from "./Misinformation";
+import NetiquettePage from "./Netiquette";
+import StudyTipsPage from "./StudyTips";
+import AIMediaPage from "./AIMedia";
 
 const topics = [
   {
