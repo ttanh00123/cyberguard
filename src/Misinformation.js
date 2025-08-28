@@ -19,7 +19,7 @@ const misinfoTypes = [
     title: "DOCTORED PHOTOS",
     description: "Images edited to show false events or misleading contexts",
     icon: ExternalLink,
-    color: "bg-orange-500",
+    color: "bg-orange-500-500",
     example: {
       claim: "Photo shows massive crowd at political rally",
       reality: "Image from different event, different year, crowd size digitally enhanced",
@@ -159,7 +159,7 @@ export default function MisinformationPage() {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-block mb-6">
-            <div className="w-20 h-20 bg-orange-500 brutalist-border brutalist-shadow flex items-center justify-center transform rotate-3">
+            <div className="w-20 h-20 bg-orange-500-500 brutalist-border brutalist-shadow flex items-center justify-center transform rotate-3">
               <Eye className="w-10 h-10 text-white" />
             </div>
           </div>
@@ -174,7 +174,7 @@ export default function MisinformationPage() {
           </p>
 
           {completed && (
-            <div className="mt-6 inline-block bg-lime-green text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
+            <div className="mt-6 inline-block bg-lime-500 text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5" />
                 TOPIC COMPLETED!
@@ -191,7 +191,7 @@ export default function MisinformationPage() {
           </div>
           <div className="w-full bg-gray-200 brutalist-border h-8">
             <div
-              className="bg-orange-500 h-full transition-all duration-300 ease-in-out brutalist-border border-r-4"
+              className="bg-orange-500-500 h-full transition-all duration-300 ease-in-out brutalist-border border-r-4"
               style={{ width: `${progressPercentage}%` }}
             ></div>
           </div>
@@ -261,7 +261,7 @@ export default function MisinformationPage() {
         )}
 
         {currentStep === 2 && (
-          <div className="bg-lime-green brutalist-border brutalist-shadow p-8 mb-12 transform rotate-1">
+          <div className="bg-lime-500 brutalist-border brutalist-shadow p-8 mb-12 transform rotate-1">
             <h2 className="text-3xl md:text-4xl font-black text-center mb-8">
               ✅ RELIABLE SOURCES
             </h2>
@@ -296,7 +296,7 @@ export default function MisinformationPage() {
             {!completed && (
               <button
                 onClick={markComplete}
-                className="bg-orange-500 text-white px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all"
+                className="bg-orange-500-500 text-white px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all"
               >
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="w-6 h-6" />
@@ -305,7 +305,7 @@ export default function MisinformationPage() {
               </button>
             )}
              {completed && (
-               <div className="mt-6 inline-block bg-lime-green text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
+               <div className="mt-6 inline-block bg-lime-500 text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5" />
                   TOPIC COMPLETED!
@@ -330,7 +330,7 @@ export default function MisinformationPage() {
            <button 
             onClick={nextStep} 
             disabled={currentStep === totalSteps - 1}
-            className="bg-orange-500 text-white px-6 py-3 brutalist-border brutalist-shadow-small font-black text-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed">
+            className="bg-orange-500-500 text-white px-6 py-3 brutalist-border brutalist-shadow-small font-black text-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed">
              <div className="flex items-center gap-2">
                 NEXT
                 <ArrowRight className="w-5 h-5" />

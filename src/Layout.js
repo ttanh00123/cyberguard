@@ -5,22 +5,22 @@ export default function Layout({ children, currentPageName }) {
   const location = useLocation();
 
   const navigationItems = [
-    { name: "Home", url: createPageUrl("Home"), icon: Home },
-    { name: "Scams", url: createPageUrl("Scams"), icon: AlertTriangle },
-    { name: "Misinformation", url: createPageUrl("Misinformation"), icon: Eye },
-    { name: "AI Media", url: createPageUrl("AIMedia"), icon: Bot },
-    { name: "Netiquette", url: createPageUrl("Netiquette"), icon: Users },
-    { name: "Study Tips", url: createPageUrl("StudyTips"), icon: BookOpen }
+    { name: "Home", url: '/home', icon: Home },
+    { name: "Scams", url: '/scams', icon: AlertTriangle },
+    { name: "Misinformation", url: '/misinformation', icon: Eye },
+    { name: "AI Media", url: '/ai-media', icon: Bot },
+    { name: "Netiquette", url: '/netiquette', icon: Users },
+    { name: "Study Tips", url: '/study-tips', icon: BookOpen }
   ];
 
   return (
     <div className="min-h-screen bg-white">
       <style>{`
         :root {
-          --electric-blue: #0066FF;
-          --hot-pink: #FF0066;
-          --lime-green: #66FF00;
-          --orange: #FF6600;
+          --blue-500: #0066FF;
+          --pink-500: #FF0066;
+          --lime-500: #66FF00;
+          --orange-500: #FF6600;
           --pure-white: #FFFFFF;
           --deep-black: #000000;
         }
@@ -51,7 +51,7 @@ export default function Layout({ children, currentPageName }) {
       <header className="bg-white brutalist-border border-b-4 border-l-0 border-r-0 border-t-0 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link to={createPageUrl("Home")} className="flex items-center gap-3">
+            <Link to={'/home'} className="flex items-center gap-3">
               <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-pink-500 brutalist-border brutalist-shadow-small flex items-center justify-center transform rotate-2">
                 <Shield className="w-6 h-6 text-white" />
               </div>
@@ -68,8 +68,8 @@ export default function Layout({ children, currentPageName }) {
                   to={item.url}
                   className={`px-6 py-3 brutalist-border font-black text-sm transform transition-all hover:scale-105 ${
                     location.pathname === item.url
-                      ? 'bg-lime-green text-black brutalist-shadow'
-                      : 'bg-white text-black hover:bg-hot-pink hover:text-white brutalist-shadow-small'
+                      ? 'bg-lime-500 text-black brutalist-shadow'
+                      : 'bg-white text-black hover:bg-pink-500 hover:text-white brutalist-shadow-small'
                   } ${item.name === 'Scams' ? 'rotate-1' : item.name === 'AI Media' ? '-rotate-1' : ''}`}
                 >
                   <div className="flex items-center gap-2">
@@ -81,7 +81,7 @@ export default function Layout({ children, currentPageName }) {
             </nav>
 
             {/* Mobile Menu Button */}
-            <button className="md:hidden bg-electric-blue text-white px-4 py-2 brutalist-border brutalist-shadow font-black">
+            <button className="md:hidden bg-blue-500 text-white px-4 py-2 brutalist-border brutalist-shadow font-black">
               MENU
             </button>
           </div>
@@ -97,7 +97,7 @@ export default function Layout({ children, currentPageName }) {
       <footer className="bg-black text-white py-8 mt-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Shield className="w-8 h-8 text-lime-green" />
+            <Shield className="w-8 h-8 text-lime-500" />
             <h3 className="text-2xl font-black transform rotate-1">STAY SAFE ONLINE</h3>
           </div>
           <p className="text-lg font-bold">
@@ -108,7 +108,7 @@ export default function Layout({ children, currentPageName }) {
               <Link
                 key={item.name}
                 to={item.url}
-                className="text-white hover:text-lime-green transition-colors"
+                className="text-white hover:text-lime-500 transition-colors"
               >
                 {item.name}
               </Link>
