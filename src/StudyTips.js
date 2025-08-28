@@ -64,7 +64,7 @@ const studyStrategies = [
     title: "MANAGE YOUR TIME",
     description: "Use the internet efficiently without getting distracted",
     icon: Clock,
-    color: "bg-orange-500",
+    color: "bg-orange-500-500",
     tips: [
       'Set specific time limits for research sessions',
       'Use website blockers during study time',
@@ -165,7 +165,7 @@ export default function StudyTipsPage() {
           </p>
 
           {completed && (
-            <div className="mt-6 inline-block bg-lime-green text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
+            <div className="mt-6 inline-block bg-lime-500 text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5" />
                 TOPIC COMPLETED!
@@ -294,7 +294,7 @@ export default function StudyTipsPage() {
               </button>
             )}
             {completed && (
-               <div className="mt-6 inline-block bg-lime-green text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
+               <div className="mt-6 inline-block bg-lime-500 text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5" />
                   TOPIC COMPLETED!
@@ -319,7 +319,7 @@ export default function StudyTipsPage() {
            <button 
             onClick={nextStep} 
             disabled={currentStep === totalSteps - 1}
-            className="bg-hot-pink text-white px-6 py-3 brutalist-border brutalist-shadow-small font-black text-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed">
+            className="bg-pink-500 text-white px-6 py-3 brutalist-border brutalist-shadow-small font-black text-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed">
              <div className="flex items-center gap-2">
                 NEXT
                 <ArrowRight className="w-5 h-5" />
@@ -404,8 +404,8 @@ export default function StudyTipsPage() {
                 )}
 
                 {selectedStrategy.techniques && (
-                  <div className="bg-orange-50 brutalist-border p-4">
-                    <h4 className="font-black text-lg mb-3 text-orange-600">⏰ TIME MANAGEMENT TECHNIQUES:</h4>
+                  <div className="bg-orange-500-50 brutalist-border p-4">
+                    <h4 className="font-black text-lg mb-3 text-orange-500-600">⏰ TIME MANAGEMENT TECHNIQUES:</h4>
                     <ul className="space-y-2">
                       {selectedStrategy.techniques.map((technique, index) => (
                         <li key={index} className="flex items-center gap-2 font-bold">
