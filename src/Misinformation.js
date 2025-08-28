@@ -174,7 +174,7 @@ export default function MisinformationPage() {
           </p>
 
           {completed && (
-            <div className="mt-6 inline-block bg-lime-500 text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
+            <div className="mt-6 inline-block bg-lime-green text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5" />
                 TOPIC COMPLETED!
@@ -261,7 +261,7 @@ export default function MisinformationPage() {
         )}
 
         {currentStep === 2 && (
-          <div className="bg-lime-500 brutalist-border brutalist-shadow p-8 mb-12 transform rotate-1">
+          <div className="bg-lime-green brutalist-border brutalist-shadow p-8 mb-12 transform rotate-1">
             <h2 className="text-3xl md:text-4xl font-black text-center mb-8">
               ✅ RELIABLE SOURCES
             </h2>
@@ -305,7 +305,7 @@ export default function MisinformationPage() {
               </button>
             )}
              {completed && (
-               <div className="mt-6 inline-block bg-lime-500 text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
+               <div className="mt-6 inline-block bg-lime-green text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5" />
                   TOPIC COMPLETED!

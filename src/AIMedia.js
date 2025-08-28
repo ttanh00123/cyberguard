@@ -153,7 +153,7 @@ export default function AIMediaPage() {
 
           {/* This completed message is now shown only on the final step */}
           {currentStep === totalSteps -1 && completed && (
-            <div className="mt-6 inline-block bg-lime-500 text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
+            <div className="mt-6 inline-block bg-lime-green text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5" />
                 TOPIC COMPLETED!
@@ -274,7 +274,7 @@ export default function AIMediaPage() {
               </button>
             )}
             {completed && (
-               <div className="mt-6 inline-block bg-lime-500 text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
+               <div className="mt-6 inline-block bg-lime-green text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5" />
                   TOPIC COMPLETED!

@@ -8,16 +8,13 @@ import NetiquettePage from "./Netiquette";
 import StudyTipsPage from "./StudyTips";
 import AIMediaPage from "./AIMedia";
 
-/// each of the color fields below has been deprecated
-/// for eg there is no bg-hot-pink at least in this new tailwind version
-/// designer, please edit accordingly
 const topics = [
   {
     id: "scams",
     title: "Common Scams",
     description: "Learn to spot fake emails, phishing attempts, and online fraud",
     icon: AlertTriangle,
-    color: "bg-pink-500",
+    color: "bg-hot-pink",
     url: '/scams',
     difficulty: "BEGINNER"
   },
@@ -26,7 +23,7 @@ const topics = [
     title: "Spot Fake News",
     description: "Identify false information and verify sources online",
     icon: Eye,
-    color: "bg-orange-500",
+    color: "bg-orange",
     url: '/misinformation',
     difficulty: "INTERMEDIATE"
   },
@@ -35,7 +32,7 @@ const topics = [
     title: "AI-Generated Content",
     description: "Recognize deepfakes, AI images, and synthetic media",
     icon: Bot,
-    color: "bg-blue-500", 
+    color: "bg-electric-blue", 
     url: '/ai-media',
     difficulty: "ADVANCED"
   },
@@ -44,7 +41,7 @@ const topics = [
     title: "Digital Etiquette",
     description: "Be respectful and safe in online communities",
     icon: Users,
-    color: "bg-lime-500",
+    color: "bg-lime-green",
     url: '/netiquette',
     difficulty: "BEGINNER"
   },
@@ -79,8 +76,8 @@ function HomePage() {
       <section className="py-16 px-4 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
         <div className="max-w-6xl mx-auto text-center relative z-10">
           {/* Decorative Elements */}
-          <div className="absolute -top-4 -left-4 w-32 h-32 bg-lime-500 brutalist-border transform rotate-12 opacity-20"></div>
-          <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-pink-500 brutalist-border transform -rotate-12 opacity-20"></div>
+          <div className="absolute -top-4 -left-4 w-32 h-32 bg-lime-green brutalist-border transform rotate-12 opacity-20"></div>
+          <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-hot-pink brutalist-border transform -rotate-12 opacity-20"></div>
           
           <div className="inline-block mb-8">
             <div className="w-24 h-24 bg-gradient-to-br from-electric-blue to-hot-pink brutalist-border brutalist-shadow mx-auto flex items-center justify-center transform rotate-3">
@@ -98,14 +95,14 @@ function HomePage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <div className="bg-blue-500 text-white px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all">
+            <div className="bg-electric-blue text-white px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all">
               <div className="flex items-center gap-3">
                 <Target className="w-6 h-6" />
                 START LEARNING
               </div>
             </div>
             
-            <div className="bg-lime-500 text-black px-6 py-4 brutalist-border brutalist-shadow-small font-bold transform -rotate-1">
+            <div className="bg-lime-green text-black px-6 py-4 brutalist-border brutalist-shadow-small font-bold transform -rotate-1">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5" />
                 {completedTopics.length}/5 TOPICS COMPLETED
@@ -156,13 +153,13 @@ function HomePage() {
                 <Link key={topic.id} to={topic.url}>
                   <div className={`bg-white brutalist-border brutalist-shadow p-6 transform ${rotation} hover:scale-105 transition-all hover:brutalist-shadow-small relative group`}>
                     {isCompleted && (
-                      <div className="absolute -top-3 -right-3 w-8 h-8 bg-lime-500 brutalist-border rounded-full flex items-center justify-center z-10">
+                      <div className="absolute -top-3 -right-3 w-8 h-8 bg-lime-green brutalist-border rounded-full flex items-center justify-center z-10">
                         <CheckCircle2 className="w-5 h-5 text-black" />
                       </div>
                     )}
                     
                     <div className={`inline-block p-4 ${topic.color} brutalist-border brutalist-shadow-small mb-4 transform group-hover:rotate-12 transition-transform`}>
-                      <topic.icon className="w-8 h-8 text-black" />
+                      <topic.icon className="w-8 h-8 text-white" />
                     </div>
                     
                     <div className="mb-3">
