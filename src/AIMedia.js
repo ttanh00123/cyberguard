@@ -1,11 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { Bot, Eye, Camera, Video, Music, FileText, CheckCircle2, AlertTriangle, Search, ArrowLeft, ArrowRight } from "lucide-react";
+import {
+  Bot,
+  Eye,
+  Camera,
+  Video,
+  Music,
+  FileText,
+  CheckCircle2,
+  AlertTriangle,
+  Search,
+  ArrowLeft,
+  ArrowRight,
+} from "lucide-react";
+import Layout from "./Layout";
 
 const aiMediaTypes = [
   {
     id: "deepfakes",
     title: "DEEPFAKE VIDEOS",
-    description: "AI-generated videos that make people appear to say or do things they never did",
+    description:
+      "AI-generated videos that make people appear to say or do things they never did",
     icon: Video,
     color: "bg-red-500",
     signs: [
@@ -13,9 +27,9 @@ const aiMediaTypes = [
       "Blurry or inconsistent skin texture",
       "Audio doesn't match lip movements perfectly",
       "Face looks 'pasted on' to the body",
-      "Lighting inconsistencies on face vs body"
+      "Lighting inconsistencies on face vs body",
     ],
-    tools: ["Deepware Scanner", "Microsoft Video Authenticator", "Sensity"]
+    tools: ["Deepware Scanner", "Microsoft Video Authenticator", "Sensity"],
   },
   {
     id: "ai-images",
@@ -28,9 +42,13 @@ const aiMediaTypes = [
       "Asymmetrical faces or features",
       "Inconsistent lighting or shadows",
       "Text that looks garbled or wrong",
-      "Too-perfect or unrealistic details"
+      "Too-perfect or unrealistic details",
     ],
-    tools: ["FotoForensics", "This Person Does Not Exist detector", "Reverse image search"]
+    tools: [
+      "FotoForensics",
+      "This Person Does Not Exist detector",
+      "Reverse image search",
+    ],
   },
   {
     id: "ai-audio",
@@ -40,12 +58,16 @@ const aiMediaTypes = [
     color: "bg-blue-500",
     signs: [
       "Robotic or unnatural speech patterns",
-      "Inconsistent emotional tone", 
+      "Inconsistent emotional tone",
       "Background noise that doesn't match",
       "Repetitive phrases or cadence",
-      "Audio quality that seems off"
+      "Audio quality that seems off",
     ],
-    tools: ["Real-time voice detection apps", "Audio analysis software", "Cross-reference with known recordings"]
+    tools: [
+      "Real-time voice detection apps",
+      "Audio analysis software",
+      "Cross-reference with known recordings",
+    ],
   },
   {
     id: "ai-text",
@@ -58,33 +80,39 @@ const aiMediaTypes = [
       "Lack of personal details or experiences",
       "Perfect grammar but no personality",
       "Inconsistent writing style within text",
-      "Factual errors or outdated information"
+      "Factual errors or outdated information",
     ],
-    tools: ["AI content detectors", "Writing style analysis", "Fact-checking against sources"]
-  }
+    tools: [
+      "AI content detectors",
+      "Writing style analysis",
+      "Fact-checking against sources",
+    ],
+  },
 ];
 
 const detectionTips = [
   {
     title: "TRUST YOUR INSTINCTS",
-    description: "If something seems too perfect or too shocking, investigate further",
-    icon: Eye
+    description:
+      "If something seems too perfect or too shocking, investigate further",
+    icon: Eye,
   },
   {
     title: "CHECK MULTIPLE SOURCES",
     description: "Real events are reported by multiple reliable news outlets",
-    icon: Search
+    icon: Search,
   },
   {
     title: "LOOK FOR VERIFICATION",
-    description: "Official accounts, blue checkmarks, and credible sources matter",
-    icon: CheckCircle2
+    description:
+      "Official accounts, blue checkmarks, and credible sources matter",
+    icon: CheckCircle2,
   },
   {
     title: "USE DETECTION TOOLS",
     description: "Technology can help identify AI-generated content",
-    icon: Bot
-  }
+    icon: Bot,
+  },
 ];
 
 export default function AIMediaPage() {
@@ -100,7 +128,7 @@ export default function AIMediaPage() {
   }, []);
 
   const checkProgress = () => {
-    const progress = localStorage.getItem('completedTopics');
+    const progress = localStorage.getItem("completedTopics");
     if (progress) {
       const completedArray = JSON.parse(progress);
       setCompleted(completedArray.includes(TOPIC_ID));
@@ -108,11 +136,11 @@ export default function AIMediaPage() {
   };
 
   const markComplete = () => {
-    let progress = localStorage.getItem('completedTopics');
+    let progress = localStorage.getItem("completedTopics");
     let completedArray = progress ? JSON.parse(progress) : [];
     if (!completedArray.includes(TOPIC_ID)) {
       completedArray.push(TOPIC_ID);
-      localStorage.setItem('completedTopics', JSON.stringify(completedArray));
+      localStorage.setItem("completedTopics", JSON.stringify(completedArray));
     }
     setCompleted(true);
   };
@@ -132,231 +160,276 @@ export default function AIMediaPage() {
   const progressPercentage = ((currentStep + 1) / totalSteps) * 100;
 
   return (
-    <div className="min-h-screen bg-white py-8 px-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-block mb-6">
-            <div className="w-20 h-20 bg-purple-500 brutalist-border brutalist-shadow flex items-center justify-center transform rotate-3">
-              <Bot className="w-10 h-10 text-white" />
+    <Layout
+      children={
+        <div className="min-h-screen bg-white py-8 px-4">
+          <div className="max-w-6xl mx-auto">
+            {/* Header */}
+            <div className="text-center mb-12">
+              <div className="inline-block mb-6">
+                <div className="w-20 h-20 bg-purple-500 brutalist-border brutalist-shadow flex items-center justify-center transform rotate-3">
+                  <Bot className="w-10 h-10 text-white" />
+                </div>
+              </div>
+
+              <h1 className="text-5xl md:text-7xl font-black text-black mb-4 transform -rotate-1">
+                SPOT AI
+                <span className="block text-purple-500 transform rotate-2">
+                  FAKES!
+                </span>
+              </h1>
+
+              <p className="text-xl md:text-2xl font-bold text-gray-800 max-w-4xl mx-auto">
+                Learn to identify AI-generated videos, images, audio, and text!
+                🤖
+              </p>
+
+              {/* This completed message is now shown only on the final step */}
+              {currentStep === totalSteps - 1 && completed && (
+                <div className="mt-6 inline-block bg-lime-500 text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5" />
+                    TOPIC COMPLETED!
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Progress Bar */}
+            <div className="mb-12">
+              <div className="flex justify-between items-center mb-2 font-black">
+                <span>PROGRESS</span>
+                <span>
+                  STEP {currentStep + 1} / {totalSteps}
+                </span>
+              </div>
+              <div className="w-full bg-gray-200 brutalist-border h-8">
+                <div
+                  className="bg-purple-500 h-full transition-all duration-300 ease-in-out brutalist-border border-r-4"
+                  style={{ width: `${progressPercentage}%` }}
+                ></div>
+              </div>
+            </div>
+
+            {/* Step-by-step content */}
+            {currentStep === 0 && (
+              <div className="mb-16">
+                <h2 className="text-3xl md:text-4xl font-black text-center mb-8 transform rotate-1">
+                  TYPES OF AI-GENERATED CONTENT
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {aiMediaTypes.map((type, index) => {
+                    const rotation = index % 2 === 0 ? "rotate-1" : "-rotate-1";
+
+                    return (
+                      <div
+                        key={type.id}
+                        className={`bg-white brutalist-border brutalist-shadow p-6 transform ${rotation} hover:scale-105 transition-all cursor-pointer`}
+                        onClick={() => setSelectedType(type)}
+                      >
+                        <div
+                          className={`inline-block p-4 ${type.color} brutalist-border brutalist-shadow-small mb-4`}
+                        >
+                          <type.icon className="w-8 h-8 text-white" />
+                        </div>
+
+                        <h3 className="text-2xl font-black mb-3 text-black">
+                          {type.title}
+                        </h3>
+
+                        <p className="font-bold text-gray-700 mb-4">
+                          {type.description}
+                        </p>
+
+                        <div className="flex items-center gap-2 font-black text-purple-500">
+                          LEARN MORE
+                          <Bot className="w-4 h-4" />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {currentStep === 1 && (
+              <div className="bg-yellow-50 brutalist-border brutalist-shadow p-8 mb-12 transform -rotate-1">
+                <h2 className="text-3xl md:text-4xl font-black text-center mb-8">
+                  🕵️ DETECTION STRATEGIES
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {detectionTips.map((tip, index) => (
+                    <div
+                      key={index}
+                      className="bg-white brutalist-border p-6 text-center transform hover:scale-105 transition-transform"
+                    >
+                      <div className="mb-4">
+                        <tip.icon className="w-12 h-12 text-yellow-600 mx-auto" />
+                      </div>
+
+                      <h3 className="text-lg font-black mb-3">{tip.title}</h3>
+                      <p className="font-bold text-gray-700 text-sm">
+                        {tip.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {currentStep === 2 && (
+              <div className="bg-red-50 brutalist-border brutalist-shadow p-8 mb-12 transform rotate-1">
+                <div className="text-center">
+                  <AlertTriangle className="w-16 h-16 text-red-500 mx-auto mb-4" />
+                  <h2 className="text-3xl font-black mb-4 text-red-600">
+                    ⚠️ WHY THIS MATTERS
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                    <div className="bg-white brutalist-border p-4">
+                      <h3 className="font-black mb-2">ELECTION INTERFERENCE</h3>
+                      <p className="font-bold text-sm">
+                        Fake videos of politicians can influence voting
+                      </p>
+                    </div>
+                    <div className="bg-white brutalist-border p-4">
+                      <h3 className="font-black mb-2">FINANCIAL SCAMS</h3>
+                      <p className="font-bold text-sm">
+                        Voice cloning used to trick family members
+                      </p>
+                    </div>
+                    <div className="bg-white brutalist-border p-4">
+                      <h3 className="font-black mb-2">REPUTATION DAMAGE</h3>
+                      <p className="font-bold text-sm">
+                        Fake content can destroy someone's image
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {currentStep === 3 && (
+              <div className="text-center py-16">
+                <h2 className="text-4xl font-black text-center mb-4">
+                  YOU'RE AN AI DETECTIVE!
+                </h2>
+                <p className="font-bold text-lg text-center max-w-3xl mx-auto mb-8">
+                  You can now spot the signs of AI-generated content. Use this
+                  power wisely!
+                </p>
+                {!completed && (
+                  <button
+                    onClick={markComplete}
+                    className="bg-purple-500 text-white px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all"
+                  >
+                    <div className="flex items-center gap-3">
+                      <CheckCircle2 className="w-6 h-6" />
+                      MARK AS COMPLETE
+                    </div>
+                  </button>
+                )}
+                {completed && (
+                  <div className="mt-6 inline-block bg-lime-500 text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-5 h-5" />
+                      TOPIC COMPLETED!
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Navigation */}
+            <div className="flex justify-between items-center mt-12">
+              <button
+                onClick={prevStep}
+                disabled={currentStep === 0}
+                className="bg-white text-black px-6 py-3 brutalist-border brutalist-shadow-small font-black text-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed"
+              >
+                <div className="flex items-center gap-2">
+                  <ArrowLeft className="w-5 h-5" />
+                  PREV
+                </div>
+              </button>
+
+              <button
+                onClick={nextStep}
+                disabled={currentStep === totalSteps - 1}
+                className="bg-purple-500 text-white px-6 py-3 brutalist-border brutalist-shadow-small font-black text-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed"
+              >
+                <div className="flex items-center gap-2">
+                  NEXT
+                  <ArrowRight className="w-5 h-5" />
+                </div>
+              </button>
             </div>
           </div>
-          
-          <h1 className="text-5xl md:text-7xl font-black text-black mb-4 transform -rotate-1">
-            SPOT AI
-            <span className="block text-purple-500 transform rotate-2">FAKES!</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl font-bold text-gray-800 max-w-4xl mx-auto">
-            Learn to identify AI-generated videos, images, audio, and text! 🤖
-          </p>
 
-          {/* This completed message is now shown only on the final step */}
-          {currentStep === totalSteps -1 && completed && (
-            <div className="mt-6 inline-block bg-lime-500 text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5" />
-                TOPIC COMPLETED!
+          {/* Detail Modal */}
+          {selectedType && (
+            <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50">
+              <div className="bg-white brutalist-border brutalist-shadow max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="flex items-center gap-4">
+                      <div
+                        className={`p-3 ${selectedType.color} brutalist-border`}
+                      >
+                        <selectedType.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <h3 className="text-2xl font-black">
+                        {selectedType.title}
+                      </h3>
+                    </div>
+                    <button
+                      onClick={() => setSelectedType(null)}
+                      className="p-2 hover:bg-gray-100 brutalist-border"
+                    >
+                      ✕
+                    </button>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="bg-red-50 brutalist-border p-4">
+                      <h4 className="font-black text-lg mb-3 text-red-600">
+                        🚩 WARNING SIGNS:
+                      </h4>
+                      <ul className="space-y-2">
+                        {selectedType.signs.map((sign, index) => (
+                          <li
+                            key={index}
+                            className="flex items-start gap-2 font-bold"
+                          >
+                            <span className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
+                            {sign}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="bg-blue-50 brutalist-border p-4">
+                      <h4 className="font-black text-lg mb-3 text-blue-600">
+                        🛠️ DETECTION TOOLS:
+                      </h4>
+                      <ul className="space-y-2">
+                        {selectedType.tools.map((tool, index) => (
+                          <li
+                            key={index}
+                            className="flex items-center gap-2 font-bold"
+                          >
+                            <CheckCircle2 className="w-4 h-4 text-blue-500" />
+                            {tool}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           )}
         </div>
-
-        {/* Progress Bar */}
-        <div className="mb-12">
-          <div className="flex justify-between items-center mb-2 font-black">
-            <span>PROGRESS</span>
-            <span>STEP {currentStep + 1} / {totalSteps}</span>
-          </div>
-          <div className="w-full bg-gray-200 brutalist-border h-8">
-            <div
-              className="bg-purple-500 h-full transition-all duration-300 ease-in-out brutalist-border border-r-4"
-              style={{ width: `${progressPercentage}%` }}
-            ></div>
-          </div>
-        </div>
-
-        {/* Step-by-step content */}
-        {currentStep === 0 && (
-          <div className="mb-16">
-            <h2 className="text-3xl md:text-4xl font-black text-center mb-8 transform rotate-1">
-              TYPES OF AI-GENERATED CONTENT
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {aiMediaTypes.map((type, index) => {
-                const rotation = index % 2 === 0 ? 'rotate-1' : '-rotate-1';
-                
-                return (
-                  <div key={type.id} 
-                       className={`bg-white brutalist-border brutalist-shadow p-6 transform ${rotation} hover:scale-105 transition-all cursor-pointer`}
-                       onClick={() => setSelectedType(type)}>
-                    <div className={`inline-block p-4 ${type.color} brutalist-border brutalist-shadow-small mb-4`}>
-                      <type.icon className="w-8 h-8 text-white" />
-                    </div>
-                    
-                    <h3 className="text-2xl font-black mb-3 text-black">
-                      {type.title}
-                    </h3>
-                    
-                    <p className="font-bold text-gray-700 mb-4">
-                      {type.description}
-                    </p>
-                    
-                    <div className="flex items-center gap-2 font-black text-purple-500">
-                      LEARN MORE
-                      <Bot className="w-4 h-4" />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        {currentStep === 1 && (
-          <div className="bg-yellow-50 brutalist-border brutalist-shadow p-8 mb-12 transform -rotate-1">
-            <h2 className="text-3xl md:text-4xl font-black text-center mb-8">
-              🕵️ DETECTION STRATEGIES
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {detectionTips.map((tip, index) => (
-                <div key={index} className="bg-white brutalist-border p-6 text-center transform hover:scale-105 transition-transform">
-                  <div className="mb-4">
-                    <tip.icon className="w-12 h-12 text-yellow-600 mx-auto" />
-                  </div>
-                  
-                  <h3 className="text-lg font-black mb-3">{tip.title}</h3>
-                  <p className="font-bold text-gray-700 text-sm">{tip.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {currentStep === 2 && (
-          <div className="bg-red-50 brutalist-border brutalist-shadow p-8 mb-12 transform rotate-1">
-            <div className="text-center">
-              <AlertTriangle className="w-16 h-16 text-red-500 mx-auto mb-4" />
-              <h2 className="text-3xl font-black mb-4 text-red-600">⚠️ WHY THIS MATTERS</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-                <div className="bg-white brutalist-border p-4">
-                  <h3 className="font-black mb-2">ELECTION INTERFERENCE</h3>
-                  <p className="font-bold text-sm">Fake videos of politicians can influence voting</p>
-                </div>
-                <div className="bg-white brutalist-border p-4">
-                  <h3 className="font-black mb-2">FINANCIAL SCAMS</h3>
-                  <p className="font-bold text-sm">Voice cloning used to trick family members</p>
-                </div>
-                <div className="bg-white brutalist-border p-4">
-                  <h3 className="font-black mb-2">REPUTATION DAMAGE</h3>
-                  <p className="font-bold text-sm">Fake content can destroy someone's image</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {currentStep === 3 && (
-          <div className="text-center py-16">
-            <h2 className="text-4xl font-black text-center mb-4">YOU'RE AN AI DETECTIVE!</h2>
-            <p className="font-bold text-lg text-center max-w-3xl mx-auto mb-8">
-              You can now spot the signs of AI-generated content. Use this power wisely!
-            </p>
-            {!completed && (
-              <button
-                onClick={markComplete}
-                className="bg-purple-500 text-white px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all"
-              >
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-6 h-6" />
-                  MARK AS COMPLETE
-                </div>
-              </button>
-            )}
-            {completed && (
-               <div className="mt-6 inline-block bg-lime-500 text-black px-6 py-3 brutalist-border brutalist-shadow font-black transform rotate-1">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5" />
-                  TOPIC COMPLETED!
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-        
-        {/* Navigation */}
-        <div className="flex justify-between items-center mt-12">
-           <button 
-             onClick={prevStep} 
-             disabled={currentStep === 0}
-             className="bg-white text-black px-6 py-3 brutalist-border brutalist-shadow-small font-black text-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed">
-              <div className="flex items-center gap-2">
-                <ArrowLeft className="w-5 h-5" />
-                PREV
-              </div>
-           </button>
-           
-           <button 
-            onClick={nextStep} 
-            disabled={currentStep === totalSteps - 1}
-            className="bg-purple-500 text-white px-6 py-3 brutalist-border brutalist-shadow-small font-black text-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed">
-             <div className="flex items-center gap-2">
-                NEXT
-                <ArrowRight className="w-5 h-5" />
-              </div>
-           </button>
-        </div>
-      </div>
-
-      {/* Detail Modal */}
-      {selectedType && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50">
-          <div className="bg-white brutalist-border brutalist-shadow max-w-3xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex justify-between items-start mb-6">
-                <div className="flex items-center gap-4">
-                  <div className={`p-3 ${selectedType.color} brutalist-border`}>
-                    <selectedType.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-black">{selectedType.title}</h3>
-                </div>
-                <button
-                  onClick={() => setSelectedType(null)}
-                  className="p-2 hover:bg-gray-100 brutalist-border"
-                >
-                  ✕
-                </button>
-              </div>
-
-              <div className="space-y-6">
-                <div className="bg-red-50 brutalist-border p-4">
-                  <h4 className="font-black text-lg mb-3 text-red-600">🚩 WARNING SIGNS:</h4>
-                  <ul className="space-y-2">
-                    {selectedType.signs.map((sign, index) => (
-                      <li key={index} className="flex items-start gap-2 font-bold">
-                        <span className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
-                        {sign}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="bg-blue-50 brutalist-border p-4">
-                  <h4 className="font-black text-lg mb-3 text-blue-600">🛠️ DETECTION TOOLS:</h4>
-                  <ul className="space-y-2">
-                    {selectedType.tools.map((tool, index) => (
-                      <li key={index} className="flex items-center gap-2 font-bold">
-                        <CheckCircle2 className="w-4 h-4 text-blue-500" />
-                        {tool}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+      }
+    />
   );
 }
