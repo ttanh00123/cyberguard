@@ -20,7 +20,7 @@ const commonScams = [
     title: "FAKE TECH SUPPORT",
     description: "Scammers pretending to be from Microsoft, Apple, or other companies",
     icon: Phone,
-    color: "bg-orange-500-500",
+    color: "bg-orange-500",
     example: {
       scenario: "Pop-up on your computer",
       message: "WARNING: Your computer is infected with 5 viruses! Call 1-800-FAKE-HELP now!",

@@ -64,7 +64,7 @@ const studyStrategies = [
     title: "MANAGE YOUR TIME",
     description: "Use the internet efficiently without getting distracted",
     icon: Clock,
-    color: "bg-orange-500-500",
+    color: "bg-orange-500",
     tips: [
       'Set specific time limits for research sessions',
       'Use website blockers during study time',
