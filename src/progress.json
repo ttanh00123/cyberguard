@@ -1,0 +1,22 @@
+{
+  "name": "Progress",
+  "type": "object",
+  "properties": {
+    "topic": {
+      "type": "string",
+      "description": "The safety topic completed"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the topic was completed"
+    },
+    "score": {
+      "type": "number",
+      "description": "Score or engagement level"
+    }
+  },
+  "required": [
+    "topic"
+  ]
+}

@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Progress } from "progress";
 import { AlertTriangle, Eye, Bot, Users, BookOpen, Shield, Target, Zap, CheckCircle2, ArrowRight } from "lucide-react";
-
-// Example placeholder components for each topic page
-function ScamsPage() { return <div>Scams Page</div>; }
-function MisinformationPage() { return <div>Misinformation Page</div>; }
-function AIMediaPage() { return <div>AI Media Page</div>; }
-function NetiquettePage() { return <div>Netiquette Page</div>; }
-function StudyTipsPage() { return <div>Study Tips Page</div>; }
 
 const topics = [
   {
@@ -16,7 +10,7 @@ const topics = [
     description: "Learn to spot fake emails, phishing attempts, and online fraud",
     icon: AlertTriangle,
     color: "bg-hot-pink",
-    url: '/scams',
+    url: createPageUrl("scams"),
     difficulty: "BEGINNER"
   },
   {
@@ -25,7 +19,7 @@ const topics = [
     description: "Identify false information and verify sources online",
     icon: Eye,
     color: "bg-orange",
-    url: '/misinformation',
+    url: createPageUrl("misinformation"),
     difficulty: "INTERMEDIATE"
   },
   {
@@ -34,7 +28,7 @@ const topics = [
     description: "Recognize deepfakes, AI images, and synthetic media",
     icon: Bot,
     color: "bg-electric-blue", 
-    url: '/ai-media',
+    url: createPageUrl("aimedia"),
     difficulty: "ADVANCED"
   },
   {
@@ -43,7 +37,7 @@ const topics = [
     description: "Be respectful and safe in online communities",
     icon: Users,
     color: "bg-lime-green",
-    url: '/netiquette',
+    url: createPageUrl("netiquette"),
     difficulty: "BEGINNER"
   },
   {
@@ -52,22 +46,35 @@ const topics = [
     description: "Use the web effectively for research and learning",
     icon: BookOpen,
     color: "bg-purple-500",
-    url: '/study-tips',
+    url: createPageUrl("efficient"),
     difficulty: "INTERMEDIATE"
   }
 ];
 
-function HomePage() {
+export default function HomePage() {
   const [completedTopics, setCompletedTopics] = useState([]);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     loadProgress();
+    loadUser();
   }, []);
 
-  const loadProgress = () => {
-    const progress = localStorage.getItem('completedTopics');
-    if (progress) {
-      setCompletedTopics(JSON.parse(progress));
+  const loadProgress = async () => {
+    try {
+      const progress = await Progress.list();
+      setCompletedTopics(progress.map(p => p.topic));
+    } catch (error) {
+      console.log("No progress yet");
+    }
+  };
+
+  const loadUser = async () => {
+    try {
+      const currentUser = await User.me();
+      setUser(currentUser);
+    } catch (error) {
+      console.log("User not logged in");
     }
   };
 
@@ -103,12 +110,14 @@ function HomePage() {
               </div>
             </div>
             
-            <div className="bg-lime-green text-black px-6 py-4 brutalist-border brutalist-shadow-small font-bold transform -rotate-1">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5" />
-                {completedTopics.length}/5 TOPICS COMPLETED
+            {user && (
+              <div className="bg-lime-green text-black px-6 py-4 brutalist-border brutalist-shadow-small font-bold transform -rotate-1">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5" />
+                  {completedTopics.length}/5 TOPICS COMPLETED
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>
@@ -212,20 +221,5 @@ function HomePage() {
         </div>
       </section>
     </div>
-  );
-}
-
-export default function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/scams" element={<ScamsPage />} />
-        <Route path="/misinformation" element={<MisinformationPage />} />
-        <Route path="/ai-media" element={<AIMediaPage />} />
-        <Route path="/netiquette" element={<NetiquettePage />} />
-        <Route path="/study-tips" element={<StudyTipsPage />} />
-      </Routes>
-    </BrowserRouter>
   );
 }
