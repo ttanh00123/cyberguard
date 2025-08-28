@@ -1,4 +1,4 @@
-import React from "react";import { Link, useLocation } from "react-router-dom";
+import React from "react";import { Link, useLocation } from "react-router";
 import { Shield, Home, AlertTriangle, Eye, Bot, Users, BookOpen } from "lucide-react";
 
 export default function Layout({ children, currentPageName }) {
