@@ -87,12 +87,38 @@ const detectionTips = [
   }
 ];
 
+const aiMediaQuizQuestions = [
+  {
+    question: "Which is a common sign of a deepfake video?",
+    options: [
+      "Perfectly natural facial movements",
+      "Audio matches lip movements exactly",
+      "Lighting inconsistencies on face vs body",
+      "Clear author and source information"
+    ],
+    correct: 2,
+    explanation: "Lighting inconsistencies are a common sign of deepfakes."
+  },
+  {
+    question: "AI-generated images often have:",
+    options: [
+      "Perfectly symmetrical faces",
+      "Strange artifacts in backgrounds",
+      "Consistent, realistic text",
+      "No visual errors"
+    ],
+    correct: 1,
+    explanation: "Artifacts in backgrounds are a giveaway for AI images."
+  }
+];
+
 export default function AIMediaPage() {
   const [selectedType, setSelectedType] = useState(null);
   const [completed, setCompleted] = useState(false);
   const [showQuiz, setShowQuiz] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
-  const totalSteps = 4;
+  const [quizCompleted, setQuizCompleted] = useState(false);
+  const totalSteps = 5; // Increase to 5 steps
   const TOPIC_ID = "ai-media";
 
   useEffect(() => {
@@ -256,7 +282,25 @@ export default function AIMediaPage() {
           </div>
         )}
 
+        {/* Knowledge Quiz Step */}
         {currentStep === 3 && (
+          <div className="text-center py-16">
+            <h2 className="text-4xl font-black text-center mb-4">KNOWLEDGE CHECK!</h2>
+            <p className="font-bold text-lg text-center max-w-3xl mx-auto mb-8">
+              Answer all questions correctly to unlock the final step!
+            </p>
+            <AIMediaQuizSection
+              questions={aiMediaQuizQuestions}
+              onComplete={() => {
+                setQuizCompleted(true);
+                nextStep();
+              }}
+              disabled={quizCompleted}
+            />
+          </div>
+        )}
+
+        {currentStep === 4 && (
           <div className="text-center py-16">
             <h2 className="text-4xl font-black text-center mb-4">YOU'RE AN AI DETECTIVE!</h2>
             <p className="font-bold text-lg text-center max-w-3xl mx-auto mb-8">
@@ -298,7 +342,10 @@ export default function AIMediaPage() {
            
            <button 
             onClick={nextStep} 
-            disabled={currentStep === totalSteps - 1}
+            disabled={
+              currentStep === totalSteps - 1 ||
+              (currentStep === 3 && !quizCompleted)
+            }
             className="bg-purple-500 text-white px-6 py-3 brutalist-border brutalist-shadow-small font-black text-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed">
              <div className="flex items-center gap-2">
                 NEXT
@@ -355,6 +402,94 @@ export default function AIMediaPage() {
               </div>
             </div>
           </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Add this component at the bottom of the file
+function AIMediaQuizSection({ questions, onComplete, disabled }) {
+  const [answers, setAnswers] = useState(Array(questions.length).fill(null));
+  const [showExplanation, setShowExplanation] = useState(Array(questions.length).fill(false));
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSelect = (qIdx, optIdx) => {
+    if (submitted) return;
+    const newAnswers = [...answers];
+    newAnswers[qIdx] = optIdx;
+    setAnswers(newAnswers);
+
+    const newShow = [...showExplanation];
+    newShow[qIdx] = true;
+    setShowExplanation(newShow);
+  };
+
+  const allAnswered = answers.every(a => a !== null);
+  const allCorrect = answers.every((a, i) => a === questions[i].correct);
+
+  const handleSubmit = () => {
+    setSubmitted(true);
+  };
+
+  return (
+    <div className="max-w-2xl mx-auto">
+      {questions.map((q, qIdx) => (
+        <div key={qIdx} className="mb-8 bg-white brutalist-border p-6 text-left">
+          <div className="font-black mb-3">{qIdx + 1}. {q.question}</div>
+          <div className="space-y-2">
+            {q.options.map((opt, optIdx) => {
+              const isSelected = answers[qIdx] === optIdx;
+              const isCorrect = q.correct === optIdx;
+              let optClass = "brutalist-border px-4 py-2 cursor-pointer font-bold";
+              if (submitted || showExplanation[qIdx]) {
+                if (isSelected && isCorrect) optClass += " bg-lime-200";
+                else if (isSelected && !isCorrect) optClass += " bg-red-200";
+                else if (isCorrect) optClass += " bg-lime-100";
+              } else if (isSelected) {
+                optClass += " bg-purple-100";
+              }
+              return (
+                <div
+                  key={optIdx}
+                  className={optClass}
+                  onClick={() => handleSelect(qIdx, optIdx)}
+                  style={{ pointerEvents: submitted ? "none" : "auto" }}
+                >
+                  {opt}
+                </div>
+              );
+            })}
+          </div>
+          {(showExplanation[qIdx] || submitted) && (
+            <div className={`mt-3 p-3 brutalist-border ${answers[qIdx] === q.correct ? "bg-lime-50 text-lime-700" : "bg-red-50 text-red-700"}`}>
+              {answers[qIdx] === q.correct ? "✅ Correct!" : "❌ Incorrect."} {q.explanation}
+            </div>
+          )}
+        </div>
+      ))}
+      {!submitted && (
+        <button
+          className={`bg-purple-500 text-white px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all ${!allAnswered ? "opacity-50 cursor-not-allowed" : ""}`}
+          disabled={!allAnswered}
+          onClick={handleSubmit}
+        >
+          CHECK ANSWERS
+        </button>
+      )}
+      {submitted && (
+        <div className="mt-6">
+          {allCorrect ? (
+            <button
+              className="bg-lime-500 text-black px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all"
+              onClick={onComplete}
+              disabled={disabled}
+            >
+              NEXT STEP
+            </button>
+          ) : (
+            <div className="font-black text-red-600">Please try again. All answers must be correct to continue.</div>
+          )}
         </div>
       )}
     </div>
