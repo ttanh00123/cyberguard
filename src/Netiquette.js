@@ -258,7 +258,7 @@ export default function NetiquettePage() {
               </div>
               <div className="w-full bg-gray-200 brutalist-border h-8">
                 <div
-                  className="bg-hot-pink h-full transition-all duration-300 ease-in-out brutalist-border border-r-4"
+                  className="bg-hot-pink h-full transition-all duration-300 ease-in-out"
                   style={{ width: `${progressPercentage}%` }}
                 ></div>
               </div>

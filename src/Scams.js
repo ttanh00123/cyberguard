@@ -213,7 +213,7 @@ export default function ScamsPage() {
             </div>
             <div className="w-full bg-gray-200 brutalist-border h-8">
               <div
-                className="bg-lime-green brutalist-border border-r-4 h-full transition-all duration-300 ease-in-out"
+                className="bg-lime-green h-full transition-all duration-300 ease-in-out"
                 style={{ width: `${progressPercentage}%` }}
               ></div>
             </div>
