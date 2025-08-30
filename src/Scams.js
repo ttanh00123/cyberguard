@@ -507,89 +507,82 @@ function ScamQuizSection({ questions, onComplete, disabled }) {
   };
 
   return (
-    <Layout
-      children={
-        <div className="max-w-2xl mx-auto">
-          {questions.map((q, qIdx) => (
-            <div
-              key={qIdx}
-              className="mb-8 bg-white brutalist-border p-6 text-left"
-            >
-              <div className="font-black mb-3">
-                {qIdx + 1}. {q.question}
-              </div>
-              <div className="space-y-2">
-                {q.options.map((opt, optIdx) => {
-                  const isSelected = answers[qIdx] === optIdx;
-                  const isCorrect = q.correct === optIdx;
-                  let optClass =
-                    "brutalist-border px-4 py-2 cursor-pointer font-bold";
-                  if (submitted || showExplanation[qIdx]) {
-                    if (isSelected && isCorrect) optClass += " bg-lime-200";
-                    else if (isSelected && !isCorrect)
-                      optClass += " bg-red-200";
-                    else if (isCorrect) optClass += " bg-lime-100";
-                  } else if (isSelected) {
-                    optClass += " bg-pink-100";
-                  }
-                  return (
-                    <div
-                      key={optIdx}
-                      className={optClass}
-                      onClick={() => handleSelect(qIdx, optIdx)}
-                      style={{ pointerEvents: submitted ? "none" : "auto" }}
-                    >
-                      {opt}
-                    </div>
-                  );
-                })}
-              </div>
-              {(showExplanation[qIdx] || submitted) && (
+    <div className="max-w-2xl mx-auto">
+      {questions.map((q, qIdx) => (
+        <div
+          key={qIdx}
+          className="mb-8 bg-white brutalist-border p-6 text-left"
+        >
+          <div className="font-black mb-3">
+            {qIdx + 1}. {q.question}
+          </div>
+          <div className="space-y-2">
+            {q.options.map((opt, optIdx) => {
+              const isSelected = answers[qIdx] === optIdx;
+              const isCorrect = q.correct === optIdx;
+              let optClass =
+                "brutalist-border px-4 py-2 cursor-pointer font-bold";
+              if (submitted || showExplanation[qIdx]) {
+                if (isSelected && isCorrect) optClass += " bg-lime-200";
+                else if (isSelected && !isCorrect) optClass += " bg-red-200";
+                else if (isCorrect) optClass += " bg-lime-100";
+              } else if (isSelected) {
+                optClass += " bg-pink-100";
+              }
+              return (
                 <div
-                  className={`mt-3 p-3 brutalist-border ${
-                    answers[qIdx] === q.correct
-                      ? "bg-lime-50 text-lime-700"
-                      : "bg-red-50 text-red-700"
-                  }`}
+                  key={optIdx}
+                  className={optClass}
+                  onClick={() => handleSelect(qIdx, optIdx)}
+                  style={{ pointerEvents: submitted ? "none" : "auto" }}
                 >
-                  {answers[qIdx] === q.correct
-                    ? "✅ Correct!"
-                    : "❌ Incorrect."}{" "}
-                  {q.explanation}
+                  {opt}
                 </div>
-              )}
-            </div>
-          ))}
-          {!submitted && (
-            <button
-              className={`bg-hot-pink text-white px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all ${
-                !allAnswered ? "opacity-50 cursor-not-allowed" : ""
+              );
+            })}
+          </div>
+          {(showExplanation[qIdx] || submitted) && (
+            <div
+              className={`mt-3 p-3 brutalist-border ${
+                answers[qIdx] === q.correct
+                  ? "bg-lime-50 text-lime-700"
+                  : "bg-red-50 text-red-700"
               }`}
-              disabled={!allAnswered}
-              onClick={handleSubmit}
             >
-              CHECK ANSWERS
-            </button>
-          )}
-          {submitted && (
-            <div className="mt-6">
-              {allCorrect ? (
-                <button
-                  className="bg-lime-green text-black px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all"
-                  onClick={onComplete}
-                  disabled={disabled}
-                >
-                  NEXT STEP
-                </button>
-              ) : (
-                <div className="font-black text-red-600">
-                  Please try again. All answers must be correct to continue.
-                </div>
-              )}
+              {answers[qIdx] === q.correct ? "✅ Correct!" : "❌ Incorrect."}{" "}
+              {q.explanation}
             </div>
           )}
         </div>
-      }
-    />
+      ))}
+      {!submitted && (
+        <button
+          className={`bg-hot-pink text-white px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all ${
+            !allAnswered ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+          disabled={!allAnswered}
+          onClick={handleSubmit}
+        >
+          CHECK ANSWERS
+        </button>
+      )}
+      {submitted && (
+        <div className="mt-6">
+          {allCorrect ? (
+            <button
+              className="bg-lime-green text-black px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all"
+              onClick={onComplete}
+              disabled={disabled}
+            >
+              NEXT STEP
+            </button>
+          ) : (
+            <div className="font-black text-red-600">
+              Please try again. All answers must be correct to continue.
+            </div>
+          )}
+        </div>
+      )}
+    </div>
   );
 }
