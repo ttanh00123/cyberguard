@@ -121,7 +121,14 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <div className="bg-blue-500 text-white px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all">
+                <div
+                  className="bg-blue-500 text-white px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all"
+                  onClick={() => {
+                    document
+                      .querySelector("#choose-your-mission")
+                      .scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
                   <div className="flex items-center gap-3">
                     <Target className="w-6 h-6" />
                     START LEARNING
@@ -174,7 +181,7 @@ export default function HomePage() {
 
           {/* Topics Grid */}
           <section className="py-16 px-4">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-6xl mx-auto" id="choose-your-mission">
               <h2 className="text-4xl md:text-6xl font-black text-center mb-4 transform rotate-1">
                 CHOOSE YOUR
                 <span className="block text-blue-500 transform -rotate-2">
