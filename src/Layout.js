@@ -1,30 +1,31 @@
-import React from "react";import { Link, useLocation } from "react-router";
-import { Shield, Home, AlertTriangle, Eye, Bot, Users, BookOpen } from "lucide-react";
+import React from "react";
+import { Link, useLocation } from "react-router";
+import {
+  Shield,
+  Home,
+  AlertTriangle,
+  Eye,
+  Bot,
+  Users,
+  BookOpen,
+} from "lucide-react";
 
 export default function Layout({ children, currentPageName }) {
   const location = useLocation();
 
   const navigationItems = [
-    { name: "Home", url: '/home', icon: Home },
-    { name: "Scams", url: '/scams', icon: AlertTriangle },
-    { name: "Misinformation", url: '/misinformation', icon: Eye },
-    { name: "AI Media", url: '/ai-media', icon: Bot },
-    { name: "Netiquette", url: '/netiquette', icon: Users },
-    { name: "Study Tips", url: '/study-tips', icon: BookOpen }
+    { name: "Home", url: "/home", icon: Home },
+    { name: "Scams", url: "/scams", icon: AlertTriangle },
+    { name: "Misinformation", url: "/misinformation", icon: Eye },
+    { name: "AI Media", url: "/ai-media", icon: Bot },
+    { name: "Netiquette", url: "/netiquette", icon: Users },
+    { name: "Study Tips", url: "/study-tips", icon: BookOpen },
   ];
 
   return (
     <div className="min-h-screen bg-white">
-      <style>{`
-        :root {
-          --blue-500: #0066FF;
-          --pink-500: #FF0066;
-          --lime-500: #66FF00;
-          --orange-500: #FF6600;
-          --pure-white: #FFFFFF;
-          --deep-black: #000000;
-        }
-        
+      <style>
+        {`
         body {
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
           font-weight: 700;
@@ -45,14 +46,15 @@ export default function Layout({ children, currentPageName }) {
         .brutalist-text {
           text-shadow: 3px 3px 0px #000000;
         }
-      `}</style>
+      `}
+      </style>
 
       {/* Navigation Header */}
       <header className="bg-white brutalist-border border-b-4 border-l-0 border-r-0 border-t-0 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link to={'/home'} className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-pink-500 brutalist-border brutalist-shadow-small flex items-center justify-center transform rotate-2">
+            <Link to={"/home"} className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-hot-pink brutalist-border brutalist-shadow-small flex items-center justify-center transform rotate-2">
                 <Shield className="w-6 h-6 text-white" />
               </div>
               <h1 className="text-2xl font-black text-black transform -rotate-1">
@@ -61,16 +63,22 @@ export default function Layout({ children, currentPageName }) {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex gap-2">
+            <nav className="md:flex gap-2">
               {navigationItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.url}
                   className={`px-6 py-3 brutalist-border font-black text-sm transform transition-all hover:scale-105 ${
                     location.pathname === item.url
-                      ? 'bg-lime-500 text-black brutalist-shadow'
-                      : 'bg-white text-black hover:bg-pink-500 hover:text-white brutalist-shadow-small'
-                  } ${item.name === 'Scams' ? 'rotate-1' : item.name === 'AI Media' ? '-rotate-1' : ''}`}
+                      ? "bg-lime-green text-black brutalist-shadow"
+                      : "bg-white text-black hover:bg-hot-pink hover:text-white brutalist-shadow-small"
+                  } ${
+                    item.name === "Scams"
+                      ? "rotate-1"
+                      : item.name === "AI Media"
+                      ? "-rotate-1"
+                      : ""
+                  }`}
                 >
                   <div className="flex items-center gap-2">
                     <item.icon className="w-4 h-4" />
@@ -89,16 +97,16 @@ export default function Layout({ children, currentPageName }) {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1">
-        {children}
-      </main>
+      <main className="flex-1">{children}</main>
 
       {/* Footer */}
       <footer className="bg-black text-white py-8 mt-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Shield className="w-8 h-8 text-lime-500" />
-            <h3 className="text-2xl font-black transform rotate-1">STAY SAFE ONLINE</h3>
+            <Shield className="w-8 h-8 text-lime-green" />
+            <h3 className="text-2xl font-black transform rotate-1">
+              STAY SAFE ONLINE
+            </h3>
           </div>
           <p className="text-lg font-bold">
             Knowledge is your best protection on the internet! 🛡️
@@ -108,7 +116,7 @@ export default function Layout({ children, currentPageName }) {
               <Link
                 key={item.name}
                 to={item.url}
-                className="text-white hover:text-lime-500 transition-colors"
+                className="text-white hover:text-lime-green transition-colors"
               >
                 {item.name}
               </Link>
