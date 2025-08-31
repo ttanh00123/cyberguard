@@ -135,7 +135,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                {user && (
+                {progress && (
                   <div className="bg-lime-green text-black px-6 py-4 brutalist-border brutalist-shadow-small font-bold transform -rotate-1">
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="w-5 h-5" />
@@ -150,7 +150,7 @@ export default function HomePage() {
           {/* Stats Section */}
           <section className="py-12 px-4 bg-black text-white">
             <div className="max-w-6xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid xs:grid-cols-1 lg:grid-cols-3 gap-8">
                 <div className="text-center">
                   <div className="text-5xl font-black text-hot-pink mb-2">
                     73%

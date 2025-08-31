@@ -623,7 +623,15 @@ function StudyQuizSection({ questions, onComplete, disabled }) {
                   : "bg-red-50 text-red-700"
               }`}
             >
-              {answers[qIdx] === q.correct ? "✅ Correct!" : "❌ Incorrect."}{" "}
+              {answers[qIdx] === q.correct ? (
+                <b>
+                  <Check className="w-5 h-5" /> Correct!
+                </b>
+              ) : (
+                <b>
+                  <X className="w-5 h-5" /> Incorrect!
+                </b>
+              )}{" "}
               {q.explanation}
             </div>
           )}
