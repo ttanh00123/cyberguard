@@ -68,29 +68,6 @@ export default function HomePage() {
   const [completedTopics, setCompletedTopics] = useState([]);
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    loadProgress();
-    loadUser();
-  }, []);
-
-  const loadProgress = async () => {
-    try {
-      const progress = await Progress.list();
-      setCompletedTopics(progress.map((p) => p.topic));
-    } catch (error) {
-      console.log("No progress yet");
-    }
-  };
-
-  const loadUser = async () => {
-    try {
-      const currentUser = await User.me();
-      setUser(currentUser);
-    } catch (error) {
-      console.log("User not logged in");
-    }
-  };
-
   return (
     <Layout
       children={
@@ -135,14 +112,12 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                {progress && (
-                  <div className="bg-lime-green text-black px-6 py-4 brutalist-border brutalist-shadow-small font-bold transform -rotate-1">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5" />
-                      {completedTopics.length}/5 TOPICS COMPLETED
-                    </div>
+                <div className="bg-lime-green text-black px-6 py-4 brutalist-border brutalist-shadow-small font-bold transform -rotate-1">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5" />
+                    {completedTopics.length}/5 TOPICS COMPLETED
                   </div>
-                )}
+                </div>
               </div>
             </div>
           </section>
