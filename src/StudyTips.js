@@ -15,6 +15,9 @@ import {
 } from "lucide-react";
 import Layout from "./Layout";
 
+// How to study effectively with high sperm yield
+// while guaranteeing the quality and resilience
+// of products.
 const studyStrategies = [
   {
     id: "smart-searching",
