@@ -128,7 +128,7 @@ export default function HomePage() {
               <div className="grid xs:grid-cols-1 lg:grid-cols-2 gap-8">
                 <div className="text-center">
                   <div className="text-5xl font-black text-hot-pink mb-2">
-                    84%
+                    74%
                   </div>
                   <div className="text-xl font-bold">
                     of Singaporeans encounter harmful content online in 2025
