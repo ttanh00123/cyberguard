@@ -88,7 +88,7 @@ export default function HomePage() {
               <h1 className="text-6xl md:text-8xl font-black text-black mb-6 transform -rotate-1">
                 CyberGuard
                 <span className="block text-hot-pink transform rotate-2">
-                  
+
                 </span>
               </h1>
 
@@ -125,7 +125,7 @@ export default function HomePage() {
           {/* Stats Section */}
           <section className="py-12 px-4 bg-black text-white">
             <div className="max-w-6xl mx-auto">
-              <div className="grid xs:grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="grid xs:grid-cols-1 lg:grid-cols-2 gap-8">
                 <div className="text-center">
                   <div className="text-5xl font-black text-hot-pink mb-2">
                     84%
@@ -169,8 +169,8 @@ export default function HomePage() {
                     index % 3 === 0
                       ? "rotate-1"
                       : index % 3 === 1
-                      ? "-rotate-1"
-                      : "rotate-2";
+                        ? "-rotate-1"
+                        : "rotate-2";
 
                   return (
                     <Link key={topic.id} to={topic.url}>
