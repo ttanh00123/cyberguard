@@ -6,6 +6,7 @@ import {
   Eye,
   Bot,
   Users,
+  // moe moe kyun~
   BookOpen,
   Shield,
   Target,
@@ -65,7 +66,7 @@ const topics = [
 ];
 
 //　もえ～　もえ～　きゅん～
-//　にゃ～　主人さまがすきです！
+//　にゃ～　お主人さまがすきです！
 export default function HomePage() {
   const [completedTopics, setCompletedTopics] = useState([]);
   const [user, setUser] = useState(null);

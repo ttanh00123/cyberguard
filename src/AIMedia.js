@@ -555,11 +555,10 @@ function AIMediaQuizSection({ questions, onComplete, disabled }) {
           </div>
           {(showExplanation[qIdx] || submitted) && (
             <div
-              className={`mt-3 p-3 brutalist-border ${
-                answers[qIdx] === q.correct
+              className={`mt-3 p-3 brutalist-border ${answers[qIdx] === q.correct
                   ? "bg-lime-50 text-lime-700"
                   : "bg-red-50 text-red-700"
-              }`}
+                }`}
             >
               {answers[qIdx] === q.correct ? (
                 <b>
@@ -577,9 +576,8 @@ function AIMediaQuizSection({ questions, onComplete, disabled }) {
       ))}
       {!submitted && (
         <button
-          className={`bg-purple-500 text-white px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all ${
-            !allAnswered ? "opacity-50 cursor-not-allowed" : ""
-          }`}
+          className={`bg-purple-500 text-white px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all ${!allAnswered ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           disabled={!allAnswered}
           onClick={handleSubmit}
         >

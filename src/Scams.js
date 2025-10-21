@@ -418,6 +418,15 @@ export default function ScamsPage() {
                       </div>
                     )}
 
+                    {selectedScam.example.site && (
+                      <div className="mb-4">
+                        <p className="font-bold mb-1">Site:</p>
+                        <p className="bg-white brutalist-border p-2 font-mono text-sm">
+                          {selectedScam.example.site}
+                        </p>
+                      </div>
+                    )}
+
                     {selectedScam.example.sender && (
                       <div className="mb-4">
                         <p className="font-bold mb-1">From:</p>
@@ -432,6 +441,15 @@ export default function ScamsPage() {
                         <p className="font-bold mb-1">Message:</p>
                         <p className="bg-white brutalist-border p-2">
                           {selectedScam.example.content}
+                        </p>
+                      </div>
+                    )}
+
+                    {selectedScam.example.offer && (
+                      <div className="mb-4">
+                        <p className="font-bold mb-1">Offer:</p>
+                        <p className="bg-white brutalist-border p-2 font-mono text-sm">
+                          {selectedScam.example.offer}
                         </p>
                       </div>
                     )}
@@ -453,6 +471,43 @@ export default function ScamsPage() {
                         </p>
                       </div>
                     )}
+
+                    {selectedScam.example.payment && (
+                      <div className="mb-4">
+                        <p className="font-bold mb-1">Payment:</p>
+                        <p className="bg-white brutalist-border p-2 font-mono text-sm">
+                          {selectedScam.example.payment}
+                        </p>
+                      </div>
+                    )}
+
+                    {selectedScam.example.requirement && (
+                      <div className="mb-4">
+                        <p className="font-bold mb-1">Requirement:</p>
+                        <p className="bg-white brutalist-border p-2 font-mono text-sm">
+                          {selectedScam.example.requirement}
+                        </p>
+                      </div>
+                    )}
+
+                    {selectedScam.example.post && (
+                      <div className="mb-4">
+                        <p className="font-bold mb-1">Post:</p>
+                        <p className="bg-white brutalist-border p-2 font-mono text-sm">
+                          {selectedScam.example.post}
+                        </p>
+                      </div>
+                    )}
+
+                    {selectedScam.example.friend && (
+                      <div className="mb-4">
+                        <p className="font-bold mb-1">Friend:</p>
+                        <p className="bg-white brutalist-border p-2 font-mono text-sm">
+                          {selectedScam.example.friend}
+                        </p>
+                      </div>
+                    )}
+
                   </div>
 
                   <div className="bg-yellow-50 brutalist-border p-4">
@@ -544,11 +599,10 @@ function ScamQuizSection({ questions, onComplete, disabled }) {
           </div>
           {(showExplanation[qIdx] || submitted) && (
             <div
-              className={`mt-3 p-3 brutalist-border ${
-                answers[qIdx] === q.correct
-                  ? "bg-lime-50 text-lime-700"
-                  : "bg-red-50 text-red-700"
-              }`}
+              className={`mt-3 p-3 brutalist-border ${answers[qIdx] === q.correct
+                ? "bg-lime-50 text-lime-700"
+                : "bg-red-50 text-red-700"
+                }`}
             >
               {answers[qIdx] === q.correct ? (
                 <b>
@@ -566,9 +620,8 @@ function ScamQuizSection({ questions, onComplete, disabled }) {
       ))}
       {!submitted && (
         <button
-          className={`bg-hot-pink text-white px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all ${
-            !allAnswered ? "opacity-50 cursor-not-allowed" : ""
-          }`}
+          className={`bg-hot-pink text-white px-8 py-4 brutalist-border brutalist-shadow font-black text-xl transform rotate-1 hover:scale-105 transition-all ${!allAnswered ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           disabled={!allAnswered}
           onClick={handleSubmit}
         >
