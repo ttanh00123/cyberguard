@@ -86,9 +86,9 @@ export default function HomePage() {
               </div>
 
               <h1 className="text-6xl md:text-8xl font-black text-black mb-6 transform -rotate-1">
-                STAY SAFE
+                CyberGuard
                 <span className="block text-hot-pink transform rotate-2">
-                  ONLINE!
+                  
                 </span>
               </h1>
 
@@ -128,26 +128,18 @@ export default function HomePage() {
               <div className="grid xs:grid-cols-1 lg:grid-cols-3 gap-8">
                 <div className="text-center">
                   <div className="text-5xl font-black text-hot-pink mb-2">
-                    73%
+                    84%
                   </div>
                   <div className="text-xl font-bold">
-                    of teens encounter scams online
+                    of Singaporeans encounter harmful content online in 2025
                   </div>
                 </div>
                 <div className="text-center">
                   <div className="text-5xl font-black text-lime-green mb-2">
-                    85%
+                    52%
                   </div>
                   <div className="text-xl font-bold">
-                    share personal info without thinking
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="text-5xl font-black text-blue-500 mb-2">
-                    92%
-                  </div>
-                  <div className="text-xl font-bold">
-                    don't verify information sources
+                    of Singaporeans between 15 and 60 do not feel confident in identifying scams
                   </div>
                 </div>
               </div>
@@ -166,7 +158,7 @@ export default function HomePage() {
 
               <p className="text-xl font-bold text-center mb-12 max-w-3xl mx-auto">
                 Each topic teaches you essential skills to stay safe and smart
-                online. Complete them all to become an internet safety expert!
+                online. Complete them all to be safer and more vigilant online!
                 🏆
               </p>
 

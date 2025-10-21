@@ -15,11 +15,7 @@ export default function Layout({ children, currentPageName }) {
 
   const navigationItems = [
     { name: "Home", url: "/home", icon: Home },
-    { name: "Scams", url: "/scams", icon: AlertTriangle },
-    { name: "Misinformation", url: "/misinformation", icon: Eye },
-    { name: "AI Media", url: "/ai-media", icon: Bot },
-    { name: "Netiquette", url: "/netiquette", icon: Users },
-    { name: "Study Tips", url: "/study-tips", icon: BookOpen },
+    { name: "About", url: "/about", icon: AlertTriangle },
   ];
 
   return (
@@ -58,7 +54,7 @@ export default function Layout({ children, currentPageName }) {
                 <Shield className="w-6 h-6 text-white" />
               </div>
               <h1 className="text-2xl font-black text-black transform -rotate-1">
-                STAY SAFE ONLINE
+                CyberGuard
               </h1>
             </Link>
 

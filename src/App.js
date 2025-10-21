@@ -21,6 +21,7 @@ import StudyTipsPage from "./StudyTips";
 import AIMediaPage from "./AIMedia";
 import Layout from "./Layout";
 import HomePage from "./home";
+import AboutPage from "./about";
 
 const topics = [
   {
@@ -99,6 +100,7 @@ export default function App() {
         <Route path="/ai-media" element={<AIMediaPage />} />
         <Route path="/netiquette" element={<NetiquettePage />} />
         <Route path="/study-tips" element={<StudyTipsPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
     </BrowserRouter>
   );
