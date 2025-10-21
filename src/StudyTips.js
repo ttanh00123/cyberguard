@@ -11,6 +11,7 @@ import {
   TrendingUp,
   ArrowLeft,
   ArrowRight,
+  X
 } from "lucide-react";
 import Layout from "./Layout";
 
