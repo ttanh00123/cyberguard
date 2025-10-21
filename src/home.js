@@ -64,6 +64,8 @@ const topics = [
   },
 ];
 
+//　もえ～　もえ～　きゅん～
+//　にゃ～　主人さまがすきです！
 export default function HomePage() {
   const [completedTopics, setCompletedTopics] = useState([]);
   const [user, setUser] = useState(null);
