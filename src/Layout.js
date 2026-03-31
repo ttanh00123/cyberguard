@@ -48,7 +48,7 @@ export default function Layout({ children, currentPageName }) {
       {/* Navigation Header */}
       <header className="bg-white brutalist-border border-b-4 border-l-0 border-r-0 border-t-0 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <Link to={"/home"} className="flex items-center gap-3">
               <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-hot-pink brutalist-border brutalist-shadow-small flex items-center justify-center transform rotate-2">
                 <Shield className="w-6 h-6 text-white" />
@@ -59,14 +59,14 @@ export default function Layout({ children, currentPageName }) {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="md:flex gap-2">
+            <nav className="w-full sm:w-auto flex flex-wrap sm:flex-nowrap items-center justify-end gap-2">
               {navigationItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.url}
-                  className={`md:opacity-0 px-6 py-3 brutalist-border font-black text-sm transform transition-all hover:scale-105 ${location.pathname === item.url
-                      ? "bg-lime-green text-black brutalist-shadow"
-                      : "bg-white text-black hover:bg-hot-pink hover:text-white brutalist-shadow-small"
+                  className={`px-3 py-2 sm:px-4 sm:py-2 lg:px-6 lg:py-3 brutalist-border font-black text-xs sm:text-sm leading-none whitespace-nowrap transform transition-all hover:scale-105 ${location.pathname === item.url
+                    ? "bg-lime-green text-black brutalist-shadow"
+                    : "bg-white text-black hover:bg-hot-pink hover:text-white brutalist-shadow-small"
                     } ${item.name === "Scams"
                       ? "rotate-1"
                       : item.name === "AI Media"
@@ -75,7 +75,7 @@ export default function Layout({ children, currentPageName }) {
                     }`}
                 >
                   <div className="flex items-center gap-2">
-                    <item.icon className="w-4 h-4" />
+                    <item.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     {item.name}
                   </div>
                 </Link>
