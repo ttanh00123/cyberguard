@@ -64,17 +64,15 @@ export default function Layout({ children, currentPageName }) {
                 <Link
                   key={item.name}
                   to={item.url}
-                  className={`px-6 py-3 brutalist-border font-black text-sm transform transition-all hover:scale-105 ${
-                    location.pathname === item.url
+                  className={`md:opacity-0 px-6 py-3 brutalist-border font-black text-sm transform transition-all hover:scale-105 ${location.pathname === item.url
                       ? "bg-lime-green text-black brutalist-shadow"
                       : "bg-white text-black hover:bg-hot-pink hover:text-white brutalist-shadow-small"
-                  } ${
-                    item.name === "Scams"
+                    } ${item.name === "Scams"
                       ? "rotate-1"
                       : item.name === "AI Media"
-                      ? "-rotate-1"
-                      : ""
-                  }`}
+                        ? "-rotate-1"
+                        : ""
+                    }`}
                 >
                   <div className="flex items-center gap-2">
                     <item.icon className="w-4 h-4" />
